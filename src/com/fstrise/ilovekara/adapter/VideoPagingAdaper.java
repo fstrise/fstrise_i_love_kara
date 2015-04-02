@@ -1,7 +1,5 @@
 package com.fstrise.ilovekara.adapter;
 
-import java.util.List;
-
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -53,16 +51,22 @@ public class VideoPagingAdaper extends PagingBaseAdapter<video> {
 		//
 		TextView itemtext = (TextView) row.findViewById(R.id.txtTitle);
 		itemtext.setText(Utils.UppercaseFirstLetters(objv.getTitle()));
-		itemtext.setTypeface(Utils.Roboto_Regular);
+		itemtext.setTypeface(Conf.Roboto_Regular);
+		//
+		TextView txtID = (TextView) row.findViewById(R.id.txtID);
+		txtID.setText(objv.getVideo_code().toString());
+		//
+		TextView txtUrl = (TextView) row.findViewById(R.id.txtUrl);
+		txtUrl.setText(objv.getUrl());
 		//
 		TextView txtLyrics = (TextView) row.findViewById(R.id.txtLyrics);
 		txtLyrics.setText(Utils.UppercaseFirstLetters(objv.getLyrics()));
-		//txtLyrics.setTextSize((float) Conf.textSize21);
-		txtLyrics.setTypeface(Utils.Roboto_LightItalic);
+		// txtLyrics.setTextSize((float) Conf.textSize21);
+		txtLyrics.setTypeface(Conf.Roboto_LightItalic);
 		//
 		TextView txtSinger = (TextView) row.findViewById(R.id.txtSinger);
 		txtSinger.setText(Utils.UppercaseFirstLetters(objv.getSinger()));
-		txtSinger.setTypeface(Utils.Roboto_Thin);
+		txtSinger.setTypeface(Conf.Roboto_Thin);
 		//
 		ImageView imgVideo = (ImageView) row.findViewById(R.id.imgVideo);
 		imgVideo.setLayoutParams(new LinearLayout.LayoutParams(Cals.w100 * 2,
@@ -77,7 +81,4 @@ public class VideoPagingAdaper extends PagingBaseAdapter<video> {
 		return row;
 	}
 
-	static class ViewItem {
-		TextView txtTitle;
-	}
 }

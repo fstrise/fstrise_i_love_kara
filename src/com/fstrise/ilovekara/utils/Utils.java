@@ -26,22 +26,6 @@ import com.fstrise.ilovekara.MainActivity;
 import com.fstrise.ilovekara.R;
 
 public class Utils {
-	public static Typeface Roboto_Thin;
-	public static Typeface Roboto_LightItalic;
-	public static Typeface Roboto_Regular;
-	public static Typeface Roboto_Bold;
-
-	public Utils(Context cont) {
-		Roboto_Thin = Typeface.createFromAsset(cont.getAssets(),
-				"fonts/Roboto-Thin.ttf");
-		Roboto_LightItalic = Typeface.createFromAsset(cont.getAssets(),
-				"fonts/Roboto-LightItalic.ttf");
-		Roboto_Regular = Typeface.createFromAsset(cont.getAssets(),
-				"fonts/Roboto-Regular.ttf");
-		Roboto_Bold = Typeface.createFromAsset(cont.getAssets(),
-				"fonts/Roboto-Bold.ttf");
-
-	}
 
 	public static String getData(String url) {
 

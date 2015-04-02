@@ -117,7 +117,7 @@ public class FirstPage extends Activity {
 		// varHeightScree = varWidthScre;
 		// varWidthScre = vw;
 		// }
-		new Utils(FirstPage.this);
+		
 		new Cals(realWidth, realHeight, varHeightScree, varWidthScre);
 		new Conf(realWidth, FirstPage.this);
 
@@ -249,4 +249,7 @@ public class FirstPage extends Activity {
 		}
 	};
 
+	public void onBackPressed() {
+
+	}
 }

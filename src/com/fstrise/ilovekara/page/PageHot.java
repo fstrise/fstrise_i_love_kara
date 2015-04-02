@@ -20,11 +20,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fstrise.ilovekara.FirstPage;
 import com.fstrise.ilovekara.MainActivity;
 import com.fstrise.ilovekara.PlayerActivity;
+import com.fstrise.ilovekara.PlayerViewDemoActivity;
 import com.fstrise.ilovekara.R;
 import com.fstrise.ilovekara.adapter.VideoPagingAdaper;
 import com.fstrise.ilovekara.classinfo.video;
@@ -53,6 +55,9 @@ public class PageHot extends Fragment {
 	private static final int ID_ACCEPT = 2;
 	private static final int ID_UPLOAD = 3;
 	private int mSelectedRow = 0;
+	private String itemSelectedID;
+	private String itemSelectedURL;
+	private String itemSelectedTitle;
 	private Context mConetxt;
 
 	@Override
@@ -64,7 +69,7 @@ public class PageHot extends Fragment {
 		listView = (PagingListView) rootView
 				.findViewById(R.id.paging_list_view_hot);
 		adapter = new VideoPagingAdaper();
-		initData();
+		// initData();
 		//
 		listView.setAdapter(adapter);
 		listView.setHasMoreItems(true);
@@ -101,13 +106,23 @@ public class PageHot extends Fragment {
 						ActionItem actionItem = quickAction.getActionItem(pos);
 
 						if (actionId == ID_ADD) { // Add item selected
+							// Intent it = new Intent(mActivity,
+							// PlayerActivity.class);
+							// mActivity.startActivity(it);
+							// mActivity.overridePendingTransition(
+							// R.anim.open_next, R.anim.close_main);
 							Intent it = new Intent(mActivity,
-									PlayerActivity.class);
+									PlayerViewDemoActivity.class);
+							it.putExtra("id", itemSelectedID);
+							it.putExtra("url", itemSelectedURL);
+							it.putExtra("title", itemSelectedTitle);							
 							mActivity.startActivity(it);
 							mActivity.overridePendingTransition(
 									R.anim.open_next, R.anim.close_main);
-							Toast.makeText(getActivity().getBaseContext(),
-									"Add item selected on row " + mSelectedRow,
+							Toast.makeText(
+									getActivity().getBaseContext(),
+									"Add item selected on row " + mSelectedRow
+											+ " T: " + itemSelectedID,
 									Toast.LENGTH_SHORT).show();
 						} else {
 							Toast.makeText(
@@ -131,7 +146,12 @@ public class PageHot extends Fragment {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				mSelectedRow = position; // set the selected row
-
+				TextView txtID = (TextView) view.findViewById(R.id.txtID);
+				itemSelectedID = txtID.getText().toString();
+				TextView txtUrl = (TextView) view.findViewById(R.id.txtUrl);
+				itemSelectedURL = txtUrl.getText().toString();
+				TextView txtTitle = (TextView) view.findViewById(R.id.txtTitle);
+				itemSelectedTitle = txtTitle.getText().toString();
 				mQuickAction.show(view);
 
 				// change the right arrow icon to selected state
@@ -140,47 +160,47 @@ public class PageHot extends Fragment {
 		return rootView;
 	}
 
-	private void initData() {
-		firstList = new ArrayList<String>();
-		firstList.add("Afghanistan");
-		firstList.add("Albania");
-		firstList.add("Algeria");
-		firstList.add("Andorra");
-		firstList.add("Angola");
-		firstList.add("Antigua and Barbuda");
-		firstList.add("Argentina");
-		firstList.add("Armenia");
-		firstList.add("Aruba");
-		firstList.add("Australia");
-		firstList.add("Austria");
-		firstList.add("Azerbaijan");
-
-		secondList = new ArrayList<String>();
-		secondList.add("Bahamas, The");
-		secondList.add("Bahrain");
-		secondList.add("Bangladesh");
-		secondList.add("Barbados");
-		secondList.add("Belarus");
-		secondList.add("Belgium");
-		secondList.add("Belize");
-		secondList.add("Benin");
-		secondList.add("Bhutan");
-		secondList.add("Bolivia");
-		secondList.add("Bosnia and Herzegovina");
-		secondList.add("Botswana");
-		secondList.add("Brazil");
-		secondList.add("Brunei");
-		secondList.add("Bulgaria");
-		secondList.add("Burkina Faso");
-		secondList.add("Burma");
-		secondList.add("Burundi");
-
-		thirdList = new ArrayList<String>();
-		thirdList.add("Denmark");
-		thirdList.add("Djibouti");
-		thirdList.add("Dominica");
-		thirdList.add("Dominican Republic");
-	}
+	// private void initData() {
+	// firstList = new ArrayList<String>();
+	// firstList.add("Afghanistan");
+	// firstList.add("Albania");
+	// firstList.add("Algeria");
+	// firstList.add("Andorra");
+	// firstList.add("Angola");
+	// firstList.add("Antigua and Barbuda");
+	// firstList.add("Argentina");
+	// firstList.add("Armenia");
+	// firstList.add("Aruba");
+	// firstList.add("Australia");
+	// firstList.add("Austria");
+	// firstList.add("Azerbaijan");
+	//
+	// secondList = new ArrayList<String>();
+	// secondList.add("Bahamas, The");
+	// secondList.add("Bahrain");
+	// secondList.add("Bangladesh");
+	// secondList.add("Barbados");
+	// secondList.add("Belarus");
+	// secondList.add("Belgium");
+	// secondList.add("Belize");
+	// secondList.add("Benin");
+	// secondList.add("Bhutan");
+	// secondList.add("Bolivia");
+	// secondList.add("Bosnia and Herzegovina");
+	// secondList.add("Botswana");
+	// secondList.add("Brazil");
+	// secondList.add("Brunei");
+	// secondList.add("Bulgaria");
+	// secondList.add("Burkina Faso");
+	// secondList.add("Burma");
+	// secondList.add("Burundi");
+	//
+	// thirdList = new ArrayList<String>();
+	// thirdList.add("Denmark");
+	// thirdList.add("Djibouti");
+	// thirdList.add("Dominica");
+	// thirdList.add("Dominican Republic");
+	// }
 
 	private class loadVideoAsyncTask extends SafeAsyncTask<String> {
 

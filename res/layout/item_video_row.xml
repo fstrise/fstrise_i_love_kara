@@ -18,6 +18,17 @@
         android:paddingLeft="5dp" >
 
         <TextView
+            android:id="@+id/txtID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+          <TextView
+            android:id="@+id/txtUrl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
             android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
