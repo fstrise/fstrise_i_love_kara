@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import com.androidquery.AQuery;
 import com.androidquery.util.AQUtility;
+import com.fstrise.ilovekara.config.Conf;
 import com.fstrise.ilovekara.data.SqlLiteDbHelper;
 import com.fstrise.ilovekara.pagerSlidingTabstrip.PageSlidingTabStripFragment;
 
@@ -59,7 +60,7 @@ public class MainActivity extends MaterialNavigationDrawer<Object> {
 				android.os.Environment.MEDIA_MOUNTED))
 			cacheDir = new File(
 					android.os.Environment.getExternalStorageDirectory(),
-					"iLoveKara");
+					Conf.folderSave);
 		else
 			cacheDir = this.getCacheDir();
 		if (!cacheDir.exists())

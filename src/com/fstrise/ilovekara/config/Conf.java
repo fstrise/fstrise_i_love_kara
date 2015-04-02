@@ -19,14 +19,15 @@ public class Conf {
 	public static int textSize40 = 40;
 	public static int textSize35 = 35;
 	public static int textSize36 = 36;
-	
+
 	public static Typeface Roboto_Thin;
 	public static Typeface Roboto_LightItalic;
 	public static Typeface Roboto_Regular;
 	public static Typeface Roboto_Bold;
+	public static String folderSave = "iLoveKara";
 
 	public Conf(int w, Context mContext) {
-		
+
 		textSize10 = (w * 10) / 1280;
 		textSize12 = (w * 12) / 1280;
 		textSize13 = (w * 13) / 1280;
@@ -42,7 +43,7 @@ public class Conf {
 		textSize35 = (w * 35) / 1280;
 		textSize36 = (w * 36) / 1280;
 		textSize40 = (w * 40) / 1280;
-		
+
 		Roboto_Thin = Typeface.createFromAsset(mContext.getAssets(),
 				"fonts/Roboto-Thin.ttf");
 		Roboto_LightItalic = Typeface.createFromAsset(mContext.getAssets(),
@@ -51,7 +52,6 @@ public class Conf {
 				"fonts/Roboto-Regular.ttf");
 		Roboto_Bold = Typeface.createFromAsset(mContext.getAssets(),
 				"fonts/Roboto-Bold.ttf");
-
 
 	}
 }
