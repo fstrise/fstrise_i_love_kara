@@ -115,7 +115,7 @@ public class PageHot extends Fragment {
 									PlayerViewDemoActivity.class);
 							it.putExtra("id", itemSelectedID);
 							it.putExtra("url", itemSelectedURL);
-							it.putExtra("title", itemSelectedTitle);							
+							it.putExtra("title", itemSelectedTitle);
 							mActivity.startActivity(it);
 							mActivity.overridePendingTransition(
 									R.anim.open_next, R.anim.close_main);
@@ -145,15 +145,22 @@ public class PageHot extends Fragment {
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				mSelectedRow = position; // set the selected row
-				TextView txtID = (TextView) view.findViewById(R.id.txtID);
-				itemSelectedID = txtID.getText().toString();
-				TextView txtUrl = (TextView) view.findViewById(R.id.txtUrl);
-				itemSelectedURL = txtUrl.getText().toString();
-				TextView txtTitle = (TextView) view.findViewById(R.id.txtTitle);
-				itemSelectedTitle = txtTitle.getText().toString();
-				mQuickAction.show(view);
-
+				try {
+					mSelectedRow = position; // set the selected row
+					TextView txtID = (TextView) view.findViewById(R.id.txtID);
+					if (txtID != null) {
+						itemSelectedID = txtID.getText().toString();
+						TextView txtUrl = (TextView) view
+								.findViewById(R.id.txtUrl);
+						itemSelectedURL = txtUrl.getText().toString();
+						TextView txtTitle = (TextView) view
+								.findViewById(R.id.txtTitle);
+						itemSelectedTitle = txtTitle.getText().toString();
+						mQuickAction.show(view);
+					}
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
 				// change the right arrow icon to selected state
 			}
 		});
